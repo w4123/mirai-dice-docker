@@ -9,8 +9,8 @@ MAINTAINER Suhui, <suhui@kokona.tech>
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install openjdk-11-jre-headless unzip -y
-RUN adduser -D -h /home/container container
-RUN cd /home/container && wget -O dice.zip "https://drive.kokona.tech/s/pLM4wFPbGemcsJ4/download" && unzip dice.zip && rm dice.zip 
+RUN adduser --disabled-password --home /home/container container
+RUN mkdir /home/container && cd /home/container && wget -O dice.zip "https://drive.kokona.tech/s/pLM4wFPbGemcsJ4/download" && unzip dice.zip && rm dice.zip 
 
 USER container
 ENV  USER=container HOME=/home/container LANG=C.UTF-8
